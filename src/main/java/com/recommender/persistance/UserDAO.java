@@ -1,7 +1,6 @@
 package com.recommender.persistance;
 
-import com.recommender.skills.model.Job;
-import com.recommender.skills.model.User;
+import com.recommender.persistance.mappers.models.UserDAOModel;
 
 import java.util.List;
 
@@ -12,5 +11,5 @@ public interface UserDAO {
 
     public int insertUser(int userID, List<Integer> skillId);
 
-    public User getJob (int userID);
+    public UserDAOModel getJob (int userID);
 }

@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface JobDAO {
 
-    public int insertJob(int jobId, List<Integer> skillId);
+    public int insertJob(int jobId, int skillId);
 
-    public JobDAOModel getJob (int jobId);
+    public List<JobDAOModel> getJob (int jobId);
 }
