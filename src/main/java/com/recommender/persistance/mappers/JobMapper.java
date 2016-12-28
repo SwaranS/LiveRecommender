@@ -14,6 +14,6 @@ public class JobMapper implements RowMapper {
     @Override
     public JobDAOModel mapRow(ResultSet resultSet, int i) throws SQLException {
         return new JobDAOModel(resultSet.getInt("jobId"),
-                resultSet.getInt(""));
+                resultSet.getInt("skillId"));
     }
 }

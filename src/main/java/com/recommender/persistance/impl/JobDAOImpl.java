@@ -1,7 +1,7 @@
 package com.recommender.persistance.impl;
 
 import com.recommender.persistance.JobDAO;
-import com.recommender.skills.model.Job;
+import com.recommender.persistance.mappers.models.JobDAOModel;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public class JobDAOImpl implements JobDAO {
     }
 
     @Override
-    public Job getJob(int jobId) {
+    public JobDAOModel getJob(int jobId) {
         return null;
     }
 }
