@@ -102,3 +102,4 @@ CREATE UNIQUE INDEX "users_USERID_uindex"
   ON public.users USING btree
   (userid)
 TABLESPACE pg_default;
+
