@@ -4,6 +4,7 @@ import com.recommender.persistance.UserDAO;
 import com.recommender.persistance.mappers.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.sql.Types;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by swara on 25/12/2016.
  */
+@Service
 public class UserDAOImpl implements UserDAO {
 
     @Autowired

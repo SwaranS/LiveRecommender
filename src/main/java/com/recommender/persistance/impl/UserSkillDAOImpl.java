@@ -5,6 +5,7 @@ import com.recommender.persistance.mappers.UserMapper;
 import com.recommender.persistance.mappers.UserSkillMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
 
 import java.sql.Types;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by swara on 03/01/2017.
  */
+@Service
 public class UserSkillDAOImpl implements UserSkillDAO {
 
     @Autowired
