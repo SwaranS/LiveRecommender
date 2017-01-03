@@ -4,6 +4,7 @@ package com.recommender.web.controller;
  * Created by Swaran on 18/12/2016.
  */
 
+import com.recommender.recommender.DBRecommender;
 import com.recommender.service.JobService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,13 +25,16 @@ public class HomeController {
     @Autowired
     private JobService jobService;
 
+    @Autowired
+    private DBRecommender recommender;
+
     private static int counter = 0;
     private static final String VIEW_INDEX = "index";
     private final static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
-
+        System.out.println(recommender.getRecommendations());
         model.addAttribute("message", "Welcome");
         model.addAttribute("counter", ++counter);
         logger.debug("[welcome] counter : {}", counter);
