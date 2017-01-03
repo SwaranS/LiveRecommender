@@ -14,7 +14,6 @@ public class UserMapper implements RowMapper {
     public UserDAOModel mapRow(ResultSet resultSet, int i) throws SQLException {
         return new UserDAOModel(resultSet.getString("firstName"),
                 resultSet.getString("lastName"),
-                resultSet.getInt("skillId"),
                 resultSet.getInt("userId"));
     }
 }

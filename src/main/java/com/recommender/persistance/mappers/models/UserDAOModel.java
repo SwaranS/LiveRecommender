@@ -6,16 +6,7 @@ package com.recommender.persistance.mappers.models;
 public class UserDAOModel {
     private String firstName;
     private String lastName;
-    private int userId;
     private int skillId;
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
 
     public int getSkillId() {
         return skillId;
@@ -41,10 +32,9 @@ public class UserDAOModel {
         this.lastName = lastName;
     }
 
-    public UserDAOModel(String firstName, String lastName, int userId, int skillId) {
+    public UserDAOModel(String firstName, String lastName, int skillId) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userId = userId;
         this.skillId = skillId;
     }
 

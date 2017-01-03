@@ -1,12 +1,14 @@
 package com.recommender.persistance.impl;
 
 import com.recommender.persistance.JobDAO;
+import com.recommender.persistance.mappers.JobMapper;
 import com.recommender.persistance.mappers.models.JobDAOModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.sql.DataSource;
+import javax.ws.rs.GET;
 import java.sql.Types;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class JobDAOImpl implements JobDAO {
 
     @Override
     public List<JobDAOModel> getJob(int jobId) {
-        return null;
+        Object[] params = {jobId};
+        return jdbcTemplate.queryForList(GET_JOBS, params, JobMapper.class);
     }
 }
