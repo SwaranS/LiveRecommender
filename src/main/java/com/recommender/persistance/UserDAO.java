@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface UserDAO {
 
-    public int insertUser(int userID, List<Integer> skillId);
+    public int insertUser(int userID, String firstName, String lastName);
 
     public List<UserMapper> getJob (int userID);
 }

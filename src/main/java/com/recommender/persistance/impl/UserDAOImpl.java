@@ -2,10 +2,10 @@ package com.recommender.persistance.impl;
 
 import com.recommender.persistance.UserDAO;
 import com.recommender.persistance.mappers.UserMapper;
-import com.recommender.persistance.mappers.models.UserDAOModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.Types;
 import java.util.List;
 
 /**
@@ -18,15 +18,18 @@ public class UserDAOImpl implements UserDAO {
 
 
     public final String CREATE_USER = "INSERT INTO users (firstname, lastname, userid ) VALUES (?, ?, ?)";
-    public final String GET_USER = "SELECT * FROM public.users WHERE jobId = ?";
+    public final String GET_USER = "SELECT * FROM public.users WHERE userId = ?";
 
     @Override
-    public int insertUser(int userID, List<Integer> skillId) {
-        return 0;
+    public int insertUser(int userID, String firstName, String lastName) {
+        Object[] params = {userID, firstName, lastName};
+        int[] types = {Types.BIGINT, Types.VARCHAR, Types.VARCHAR};
+        return jdbcTemplate.update(CREATE_USER, params, types);
     }
 
     @Override
     public List<UserMapper> getJob(int userID) {
-        return null;
+        Object[] params = {userID};
+        return jdbcTemplate.queryForList(GET_USER, params, UserMapper.class);
     }
 }

@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * Created by swara on 03/01/2017.
  */
-public class UserSkillDAOMapper implements RowMapper {
+public class UserSkillMapper implements RowMapper {
 
     @Override
     public UserSkillDAOModel mapRow(ResultSet resultSet, int i) throws SQLException {
