@@ -22,10 +22,10 @@ public class RecommenderController {
     private DBRecommender recommender;
 
     @RequestMapping(value="/json", method = RequestMethod.GET, produces = "application/json")
-    public ResponseEntity<String> bar() {
+    public ResponseEntity<String> recommenderResponse() {
         final HttpHeaders httpHeaders= new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        return new ResponseEntity<String>("{\"test\": \"jsonResponseExample\"}", httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>("{\"test\": \"jsonResponseExample\"}", httpHeaders, HttpStatus.OK);
     }
 
 }
