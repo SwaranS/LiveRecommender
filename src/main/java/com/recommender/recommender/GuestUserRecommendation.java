@@ -36,10 +36,6 @@ public class GuestUserRecommendation {
                         0.1, similarity, model);
         //new ThresholdUserNeighborhood(Float.parseFloat(args[1]), similarity, model);
 
-
-        System.out.println("");
-
-
         Recommender recommender = new GenericBooleanPrefUserBasedRecommender(plusAnonymousModel,
                 neighborhood, similarity);
 
