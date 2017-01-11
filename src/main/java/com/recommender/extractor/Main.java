@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
         KeywordsExtractor ks = new KeywordsExtractor();
         try {
-            ks.guessFromString("input");
+            System.out.println(ks.guessFromString("input").get(0).getTerms());
         } catch (IOException e) {
             e.printStackTrace();
         }
