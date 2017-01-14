@@ -1,6 +1,5 @@
-package com.recommender.recommender;
+package com.recommender.recommender.services;
 
-import com.recommender.web.controller.HomeController;
 import org.apache.mahout.cf.taste.common.TasteException;
 import org.apache.mahout.cf.taste.impl.model.BooleanUserPreferenceArray;
 import org.apache.mahout.cf.taste.impl.model.PlusAnonymousUserDataModel;
@@ -28,10 +27,11 @@ import java.util.List;
  */
 
 @Service
-public class GuestRecommendationService {
+public class GuestRecommendationLogServiceImpl implements GuestRecommendationService {
     @Autowired
     private DataSource dataSource;
-    private final static Logger logger = LoggerFactory.getLogger(GuestRecommendationService.class);
+
+    private final static Logger logger = LoggerFactory.getLogger(GuestRecommendationLogServiceImpl.class);
 
     public List<RecommendedItem> getGuestRecommendedItems(ArrayList<Long> items, double threshold, int howMany) {
 
@@ -39,7 +39,7 @@ public class GuestRecommendationService {
         try {
             recommendedItemList = getRecommendedItems(items, threshold, howMany);
         } catch (TasteException e) {
-            logger.error("Test Exception :" + e);
+            logger.error("Taste Exception :" + e);
         }
         return recommendedItemList;
     }

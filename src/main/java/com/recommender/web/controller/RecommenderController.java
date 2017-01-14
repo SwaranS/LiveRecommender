@@ -1,7 +1,9 @@
 package com.recommender.web.controller;
 
 import com.recommender.recommender.DBRecommender;
+import com.recommender.recommender.services.GuestRecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.ArrayList;
+
 /**
  * Created by Home on 04/01/2017.
  */
@@ -19,12 +23,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RecommenderController {
 
     @Autowired
-    private DBRecommender recommender;
+    @Qualifier("guestRecommendationLogServiceImpl")
+    private GuestRecommendationService guestRecommendationService;
+
 
     @RequestMapping(value="/json", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<String> recommenderResponse() {
         final HttpHeaders httpHeaders= new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        ArrayList<Long> items = new ArrayList<>();
+        items.add(2L);
+        System.out.println(guestRecommendationService.getGuestRecommendedItems(items,0.1,20));
         return new ResponseEntity<>("{\"test\": \"jsonResponseExample\"}", httpHeaders, HttpStatus.OK);
     }
 
