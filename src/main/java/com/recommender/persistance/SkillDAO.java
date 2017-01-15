@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface SkillDAO {
 
-    public int insertSkill(int skillId, String skillName);
+    public int insertSkill(String skillName);
 
     public List<SkillMapper> getSkill(int skillId);
 }

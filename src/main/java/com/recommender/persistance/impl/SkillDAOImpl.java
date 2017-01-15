@@ -21,14 +21,14 @@ public class SkillDAOImpl implements SkillDAO {
     private JdbcTemplate jdbcTemplate;
 
 
-    public final String CREATE_SKILL = "INSERT INTO skills (skillid, skillName ) VALUES (?, ?)";
+    public final String CREATE_SKILL = "INSERT INTO skills (skillName ) VALUES (?)";
     public final String GET_SKILLS = "SELECT * FROM public.skills WHERE skillId = ?";
 
 
     @Override
-    public int insertSkill(int skillId, String skillName) {
-        Object[] params = {skillId, skillName};
-        int[] types = {Types.BIGINT, Types.VARCHAR};
+    public int insertSkill(String skillName) {
+        Object[] params = {skillName};
+        int[] types = {Types.VARCHAR};
         return jdbcTemplate.update(CREATE_SKILL, params, types);
     }
 
