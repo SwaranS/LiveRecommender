@@ -33,7 +33,7 @@ public class GuestRecommendationLogServiceImpl implements GuestRecommendationSer
 
     private final static Logger logger = LoggerFactory.getLogger(GuestRecommendationLogServiceImpl.class);
 
-    public List<RecommendedItem> getGuestRecommendedItems(ArrayList<Long> items, double threshold, int howMany) {
+    public List<RecommendedItem> getGuestRecommendedItems(List<Long> items, double threshold, int howMany) {
 
         List<RecommendedItem> recommendedItemList = new ArrayList<>();
         try {
@@ -51,8 +51,8 @@ public class GuestRecommendationLogServiceImpl implements GuestRecommendationSer
      * @return
      * @throws TasteException
      */
-    private List<RecommendedItem> getRecommendedItems(ArrayList<Long> items, double threshold, int howMany) throws TasteException {
-        List<RecommendedItem> recommendedItems = new ArrayList<RecommendedItem>();
+    private List<RecommendedItem> getRecommendedItems(List<Long> items, double threshold, int howMany) throws TasteException {
+        List<RecommendedItem> recommendedItems;
         DataModel model = getUserSkillsDataModel();
         PlusAnonymousUserDataModel plusAnonymousModel = new PlusAnonymousUserDataModel(model);
 

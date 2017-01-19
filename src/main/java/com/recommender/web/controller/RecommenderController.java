@@ -2,6 +2,7 @@ package com.recommender.web.controller;
 
 import com.recommender.recommender.DBRecommender;
 import com.recommender.recommender.services.GuestRecommendationService;
+import com.recommender.service.rest.RecommenderRestDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpHeaders;
@@ -26,15 +27,24 @@ public class RecommenderController {
     @Qualifier("guestRecommendationLogServiceImpl")
     private GuestRecommendationService guestRecommendationService;
 
+    @Autowired
+    @Qualifier("recommenderRestDelegateImpl")
+    private RecommenderRestDelegate recommenderRestDelegate;
 
-    @RequestMapping(value="/json", method = RequestMethod.GET, produces = "application/json")
+
+    @RequestMapping(value = "/json", method = RequestMethod.GET, produces = "application/json")
     public ResponseEntity<String> recommenderResponse() {
-        final HttpHeaders httpHeaders= new HttpHeaders();
+        final HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.setContentType(MediaType.APPLICATION_JSON);
         ArrayList<Long> items = new ArrayList<>();
         items.add(2L);
-        System.out.println(guestRecommendationService.getGuestRecommendedItems(items,0.1,20));
+        System.out.println(guestRecommendationService.getGuestRecommendedItems(items, 0.1, 20));
         return new ResponseEntity<>("{\"test\": \"jsonResponseExample\"}", httpHeaders, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/matchingSkills/{skills}", method = RequestMethod.GET, produces = "application/json")
+    public ResponseEntity<String> matchingSkills(@PathVariable String skills) {
+        return recommenderRestDelegate.generateMatchingSkillsResponse(skills);
     }
 
 }
