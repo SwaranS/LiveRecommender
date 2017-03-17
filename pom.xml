@@ -130,11 +130,17 @@
             <artifactId>lucene-queryparser</artifactId>
             <version>4.0.0</version>
         </dependency>
-
-
-
-
-
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- Support for Ehcache and others -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.1.4.RELEASE</version>
+        </dependency>
 
     </dependencies>
 

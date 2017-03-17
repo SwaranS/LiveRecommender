@@ -10,5 +10,5 @@ import java.util.List;
  */
 public interface GuestRecommendationService {
 
-    public List<RecommendedItem> getGuestRecommendedItems(ArrayList<Long> items, double threshold, int howMany);
+    public List<RecommendedItem> getGuestRecommendedItems(List<Long> items, double threshold, int howMany);
 }
