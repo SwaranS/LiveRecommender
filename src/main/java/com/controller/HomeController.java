@@ -1,9 +1,11 @@
-package com.recommender.web.controller;
+package com.controller;
 
 /**
  * Created by Swaran on 18/12/2016.
  */
 
+import com.epsilon.jive.JiveRestClient;
+import com.epsilon.jive.PlaceObjectConverter;
 import com.recommender.recommender.DBRecommender;
 import com.recommender.service.JobService;
 import org.slf4j.Logger;
@@ -19,14 +21,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HomeController {
 
-    @Autowired
-    private DriverManagerDataSource postGresDataSource;
 
     @Autowired
-    private JobService jobService;
+    private JiveRestClient restClient;
 
     @Autowired
-    private DBRecommender recommender;
+    private PlaceObjectConverter objectConverter;
+
 
     private static int counter = 0;
     private static final String VIEW_INDEX = "index";
@@ -34,21 +35,20 @@ public class HomeController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String welcome(ModelMap model) {
-        System.out.println(recommender.getRecommendations());
         model.addAttribute("message", "Welcome");
         model.addAttribute("counter", ++counter);
-        logger.debug("[welcome] counter : {}", counter);
 
         // Spring uses InternalResourceViewResolver and return back index.jsp
         return VIEW_INDEX;
 
     }
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String welcomeName(@PathVariable String name, ModelMap model) {
-        System.out.println(jobService.insertJob(1, 1));
-        model.addAttribute("message", "Welcome " + name);
-        model.addAttribute("counter", jobService.insertJob(1, 1));
+    @RequestMapping(value = "/{groupId}", method = RequestMethod.GET)
+    public String welcomeName(@PathVariable String groupId, ModelMap model) {
+        String groupDetails = restClient.projectReader(groupId);
+        model.addAttribute("group", objectConverter.createJivePlace(groupDetails));
+
+
         logger.debug("[welcomeName] counter : {}", counter);
         return VIEW_INDEX;
 

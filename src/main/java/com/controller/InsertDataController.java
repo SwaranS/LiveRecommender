@@ -1,6 +1,5 @@
-package com.recommender.web.controller;
+package com.controller;
 
-import com.recommender.persistance.SkillDAO;
 import com.recommender.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,8 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import java.util.Arrays;
 
 /**
  * Created by Home on 15/01/2017.

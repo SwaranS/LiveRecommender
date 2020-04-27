@@ -13,5 +13,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/liverecommender</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="dvdrental@localhost" uuid="2e4f24fe-48f7-4143-8d29-acdd432d065e">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/dvdrental</jdbc-url>
+    </data-source>
   </component>
 </project>

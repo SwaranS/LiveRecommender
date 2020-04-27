@@ -1,6 +1,5 @@
-package com.recommender.web.controller;
+package com.controller;
 
-import com.recommender.recommender.DBRecommender;
 import com.recommender.recommender.services.GuestRecommendationService;
 import com.recommender.service.rest.RecommenderRestDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
